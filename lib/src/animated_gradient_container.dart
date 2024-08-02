@@ -1,4 +1,6 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 
 class AnimatedGradientContainer extends StatelessWidget {
   const AnimatedGradientContainer(
@@ -12,11 +14,14 @@ class AnimatedGradientContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         decoration: BoxDecoration(
+            color: const Color(0xFF1AAF74).withOpacity(.2),
             borderRadius: borderRadius,
-            gradient: SweepGradient(
-                colors: [...gradientColors, ...gradientColors.reversed],
-                stops: _generateColorStops([...gradientColors, ...gradientColors.reversed]),
-                transform: GradientRotation(gradientAngle))));
+            border: GradientBoxBorder(
+                width: 2,
+                gradient: SweepGradient(
+                    colors: [...gradientColors, ...gradientColors.reversed],
+                    stops: _generateColorStops([...gradientColors, ...gradientColors.reversed]),
+                    transform: GradientRotation(gradientAngle)))));
   }
 
   List<double> _generateColorStops(List<dynamic> colors) {
